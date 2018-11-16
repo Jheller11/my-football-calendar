@@ -14,6 +14,9 @@ app.use(cookieParser())
 app.use(express.static('public'))
 app.use(helmet())
 
+// routers
+const calendarRouter = require('./routers/calendar')
+
 // views
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
@@ -21,9 +24,13 @@ app.set('view engine', 'pug')
 // custom function to log requests
 app.use((req, res, next) => {
   res.locals.title = 'My Soccer Calendar'
+  console.log('Request:')
   console.log(req.body)
   next()
 })
+
+// use routers
+app.use('/calendar', calendarRouter)
 
 // home page
 app.get('/', (req, res) => {
