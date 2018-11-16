@@ -14,9 +14,14 @@ html
                 a(href='/calendar')
                     i.fa.fa-calendar-alt
                     span Calendar
-                a(href='/signin')
-                    i.fa.fa-user
-                    span Sign In
+                if !user
+                    a(href='/signin')
+                        i.fa.fa-user
+                        span Sign In
+                else
+                    a(href='/profile')
+                        i.fa.fa-user
+                        span #{user.username}                  
 
         main
             block content

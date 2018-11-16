@@ -1,4 +1,15 @@
 extends ./layout.pug
 
 block content
-    div I am the calendar
+    .add-favorite
+        label(for='team') Add a new team:
+        input.team-input(type='text' name='team' required)
+        button.add-button
+            i.fa.fa-plus
+    .team-container
+        div Favorites:
+            ul.team-list
+    .calendar-list
+
+block scripts
+    script(src='/scripts/calendar.js')
