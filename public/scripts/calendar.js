@@ -1,4 +1,3 @@
-console.log('working')
 const teamList = document.querySelector('.team-list')
 const input = document.querySelector('.team-input')
 const addButton = document.querySelector('.add-button')
@@ -12,7 +11,7 @@ const initialize = () => {
   })
   refreshButton.addEventListener('click', e => {
     e.preventDefault()
-    console.log('clicked')
+    let string = 'teams=' + favorites.teams.join(',')
     let xhttp = new XMLHttpRequest()
     xhttp.onreadystatechange = () => {
       if (xhttp.readyState == 4 && xhttp.status == 200) {
@@ -21,8 +20,9 @@ const initialize = () => {
         updateCalendar(data, calendarList)
       }
     }
-    xhttp.open('GET', 'http://localhost:4000/calendar/refresh', true)
-    xhttp.send()
+    xhttp.open('POST', '/calendar/refresh', true)
+    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+    xhttp.send(string)
   })
 }
 

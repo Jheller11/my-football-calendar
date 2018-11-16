@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const helmet = require('helmet')
 const path = require('path')
+require('dotenv').config()
 
 // middleware
 app.use(bodyParser({ extended: true }))
