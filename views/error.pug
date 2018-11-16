@@ -1,0 +1,8 @@
+extends ./layout.pug
+
+block content
+    div
+        if error
+            div Error:  #{error}
+        else
+            div Unknown error.  Please try again.

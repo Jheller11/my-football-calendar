@@ -15,4 +15,13 @@ describe('App', () => {
         done()
       })
   })
+  it('should return a 404 when path not found', done => {
+    chai
+      .request(app)
+      .get('/abc')
+      .end((err, res) => {
+        expect(res.text).to.include('404')
+        done()
+      })
+  })
 })
