@@ -41,3 +41,6 @@ app.set('port', process.env.PORT || 4000)
 app.listen(app.get('port'), () =>
   console.log('server running on ' + app.get('port'))
 )
+
+// export app for testing purposes
+module.exports = app
