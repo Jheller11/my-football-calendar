@@ -17,7 +17,7 @@ const initialize = () => {
       if (xhttp.readyState == 4 && xhttp.status == 200) {
         let data = JSON.parse(xhttp.response)
         console.log(data)
-        updateCalendar(data, calendarList)
+        updateCalendar(data.matches, calendarList)
       }
     }
     xhttp.open('POST', '/calendar/refresh', true)
@@ -46,8 +46,10 @@ const updateCalendar = (arr, list) => {
     list.removeChild(list.childNodes[0])
   })
   arr.forEach(item => {
-    let listItem = document.createElement('li')
-    listItem.innerText = item
+    let listItem = document.createElement('div')
+    listItem.innerHTML = `<p>${item.awayTeam.name}: ${
+      item.score.fullTime.awayTeam
+    }</p><p> ${item.homeTeam.name}: ${item.score.fullTime.homeTeam}</p>`
     list.appendChild(listItem)
   })
 }
